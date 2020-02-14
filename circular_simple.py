@@ -9,6 +9,7 @@ Created on Wed Feb 12 17:50:41 2020
 #Create a star in a fixed position
 
 import math
+import matplotlib.pyplot as plt
 
 class Star:
     
@@ -20,18 +21,22 @@ class Star:
         return self.xpos, self.ypos
     
 spica = Star(1, 0)
+#print(spica.pos())
 
-print(spica.pos())
 
 #Create a body orbiting the star
 
 class Body:
     
-    def __init__(self, center_xpos, center_ypos, radius, perigee_argument):
+    def __init__(self, center_xpos, center_ypos, radius, perigee_argument, period):
         self.center_xpos = center_xpos
         self.center_ypos = center_ypos
         self.radius = radius
         self.perigee_argument = perigee_argument
+        self.period = period
+        self.orbit = plt.Circle((center_xpos, center_ypos), radius, \
+                                fill = False)
+        
         
     def pos_init(self):
         xpos = self.center_xpos +   \
@@ -41,10 +46,20 @@ class Body:
                self.radius*math.sin(math.radians(self.perigee_argument))
         return xpos, ypos
     
-tatooine = Body(*spica.pos(), 1, 10)
+    
+tatooine = Body(*spica.pos(), 0.3, 0, 1)
+#print(tatooine.pos_init())
+
+## Parte de plot - Roncha pode brincar depois
+plt.plot(*spica.pos(), 'xr')
+plt.grid(True)
+
+ax = plt.gca()
+ax.add_patch(tatooine.orbit)
+plt.axis('scaled')
+plt.show()
 
 
-print(tatooine.pos_init())
 
 #Circular orbit
 
