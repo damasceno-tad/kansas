@@ -12,7 +12,6 @@ import math
 import matplotlib.pyplot as plt
 
 class Star:
-    
     def __init__(self, xpos, ypos):
         self.xpos = xpos
         self.ypos = ypos
@@ -20,9 +19,6 @@ class Star:
     def pos(self):
         return [self.xpos, self.ypos]
     
-spica = Star(1, 0)
-print(spica.pos())
-
 
 #Create a body orbiting the star
 
@@ -60,24 +56,6 @@ class Body:
         [xpos_time, ypos_time] = self.pos_angle(angle_time_deg)
         return [xpos_time, ypos_time]
         
-
-# Creating planet: Tatooine, centered on Spica, radius 0.3
-                 # perigee at 0 deg, period of 1 "year"
-                 # passing its perigee at time 0 "year"
-                 
-tatooine = Body(spica.pos(), 0.3, 0, 1, 0)
-#print(tatooine.pos_init())
-
-## Parte de plot - Roncha pode brincar depois
-'''
-plt.plot(spica.xpos, spica.ypos, 'xr')
-plt.grid(True)
-
-ax = plt.gca()
-ax.add_patch(tatooine.orbit)
-plt.axis('scaled')
-plt.show()
-'''
 
 ##### Circular orbit
 # First: evaluate the body position in a given time
