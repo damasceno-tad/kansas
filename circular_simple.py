@@ -6,23 +6,33 @@ Created on Wed Feb 12 17:50:41 2020
 @author: taina
 """
 
-#Create a star in a fixed position
-
 import math
 import matplotlib.pyplot as plt
 
+
+# Create a star in a fixed position
+
 class Star:
-    def __init__(self, xpos, ypos):
+
+    def __init__(self, name, xpos, ypos):
+        self.name = name
         self.xpos = xpos
         self.ypos = ypos
-    
+
+    def __repr__(self):
+        return 'Star(\'{}\', {}, {})'.format(self.name, self.xpos, self.ypos)
+
+    def __str__(self):
+        return 'Star {} -- Position ({}, {})'.format(self.name, self.xpos, self.ypos)
+
     def pos(self):
         return [self.xpos, self.ypos]
     
 
-#Create a body orbiting the star
+# Create a body orbiting the star
 
 class Body:
+
     
     def __init__(self, center_pos, radius, perigee_argument, \
                  period, time_on_perigee):
