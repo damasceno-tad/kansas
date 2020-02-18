@@ -3,7 +3,7 @@
 """
 Created on Wed Feb 12 17:50:41 2020
 
-@author: taina
+@authors: taina loves roncha
 """
 
 import math
@@ -105,3 +105,7 @@ class Body:
 
 # - Maybe change the Star class to FixedBody
 # - Implement a FixedBody - Bodies tree        
+
+#Circular orbit
+
+#Plot the path between 2 dates
