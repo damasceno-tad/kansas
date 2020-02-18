@@ -3,7 +3,7 @@
 """
 Created on Wed Feb 12 17:50:41 2020
 
-@author: taina
+@authors: taina loves roncha
 """
 
 # Create a star in a fixed position
