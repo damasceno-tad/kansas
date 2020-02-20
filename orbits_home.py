@@ -27,6 +27,27 @@ print(repr(spica))
 tatooine = Body(spica.pos(), 0.3, 0, 1, 0)
 
 
+# Evaluating number of full laps between 2 dates
+print('\n--------- Testing laps --------')
+print(tatooine.path_part_laps(0, 0.5))
+print(tatooine.path_part_laps(0, 0.99999))
+print(tatooine.path_part_laps(0, 1))
+print(tatooine.path_part_laps(0, 1.0))
+print(tatooine.path_part_laps(0, 1.00001))
+print(tatooine.path_part_laps(3, 8))
+print(tatooine.path_part_laps(3, 8.00001))      
+
+# Evaluating angles
+print('\n---------- Testing angles ------')
+print(tatooine.path_angle_deg(0, 0.5))
+print(tatooine.path_angle_deg(0, 0.99999))
+print(tatooine.path_angle_deg(0, 1))
+print(tatooine.path_angle_deg(0, 1.0))
+print(tatooine.path_angle_deg(0, 1.00001))
+print(tatooine.path_angle_deg(3, 8))
+print(tatooine.path_angle_deg(3, 8.00001))   
+
+      
 # Plotting everything
 plt.plot(spica.xpos, spica.ypos, 'xr')
 plt.grid(True)

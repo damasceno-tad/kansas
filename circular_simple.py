@@ -65,11 +65,43 @@ class Body:
         angle_time_deg = math.degrees(2*math.pi*(run_time / (self.period)))
         [xpos_time, ypos_time] = self.pos_angle(angle_time_deg)
         return [xpos_time, ypos_time]
+    
+    def path_full_laps(self, time_init, time_end):
+        path_time = time_end - time_init
+        laps_float = path_time / float(self.period)
+        full_laps = math.floor(laps_float)
+        return full_laps
+    
+    def path_part_laps(self, time_init, time_end):
+        path_time = time_end - time_init
+        laps_float = path_time / float(self.period)
+        part_laps = laps_float - self.path_full_laps(time_init, time_end)
+        return part_laps
+    
+    def path_angle_deg(self, time_init, time_end):
+        part_laps = self.path_part_laps(time_init, time_end)
+        angle = math.degrees( part_laps * 2 * math.pi )
+        return angle
         
 
 ##### Circular orbit
 # First: evaluate the body position in a given time
 # DONE basic calling body.pos_time(time) will return list with [xpos, ypos]
 
-#Plot the path between 2 dates
+# Plot the path between 2 dates
+# DONE Body now evaluates full and partial laps, and also the angle (0-360 º)
+        
 # TO DO
+# - path_angle_deg and path_*_laps return undesirable residuals,
+#   Migrate from math no numpy?
+        
+# - center_pos fixed on Body __init__ prevents multiple inheritance:
+#        For example, a moon orbiting a planet orbiting a star can only have its position
+#        calculated regarding the planet (fixed).
+#        
+#        In reality, the planet should have its position calculated for a given time,
+#        and the moon ORBIT should be recalculated with respect to the planet new position, 
+#        and only then, the moon position should be calculated
+
+# - Maybe change the Star class to FixedBody
+# - Implement a FixedBody - Bodies tree        
