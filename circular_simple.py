@@ -90,11 +90,15 @@ class Body:
 
 # Plot the path between 2 dates
 # DONE Body now evaluates full and partial laps, and also the angle (0-360 º)
-        
-# TO DO
+
+# DONE:        
 # - path_angle_deg and path_*_laps return undesirable residuals,
-#   Migrate from math no numpy?
-        
+# - Migrate from math no numpy?
+#   > Actually not - using numpy gives the same precision.
+#   > A larger workaround would be needed to get rid of the residuals
+#   > I'm leaving it AS IS      
+       
+# TO DO:        
 # - center_pos fixed on Body __init__ prevents multiple inheritance:
 #        For example, a moon orbiting a planet orbiting a star can only have its position
 #        calculated regarding the planet (fixed).
