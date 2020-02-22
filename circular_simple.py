@@ -97,6 +97,7 @@ class Body:
 #   > Actually not - using numpy gives the same precision.
 #   > A larger workaround would be needed to get rid of the residuals
 #   > I'm leaving it AS IS      
+#   > I also want to test the rebase feature, so I'm diverging comments on purpose HERE        
        
 # TO DO:        
 # - center_pos fixed on Body __init__ prevents multiple inheritance:
