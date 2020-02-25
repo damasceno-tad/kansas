@@ -114,6 +114,5 @@ class Body:
 # - Maybe change the Star class to FixedBody
 # - Implement a FixedBody - Bodies tree        
 
-#Circular orbit
-
-#Plot the path between 2 dates
+# OK HERE WE GO --------------- This is the major branch trying to implement a 
+# a body tree, in order to deal with the TO DO issues stated above       
