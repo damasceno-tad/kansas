@@ -34,21 +34,50 @@ class Star:
 class Body:
 
     
-    def __init__(self, center_pos, radius, perigee_argument, \
-                 period, time_on_perigee):
+    def __init__(self, name, parent, radius, perigee_argument, \
+                 period, time_on_perigee, time):
         
+        self.name = name
+        self.parent = parent
         
-        self.center_xpos = center_pos[0]
-        self.center_ypos = center_pos[1]
         self.radius = radius
         self.perigee_argument = perigee_argument #in DEGREES
         self.period = period  
         self.time_on_perigee= time_on_perigee #must use same units as period
         
+        # Perhaps set a default for time
+        self.time = time
+        
+        self.center_pos()
+        self.set_orbit()
+       
+       
+    def __repr__(self):
+        return 'Body(\'{}\', {})'.format(self.name, self.parent.name)
+
+    def __str__(self):
+        return 'Body {} -- Parent {}'.format(self.name, self.parent.name)
+
+    def center_pos(self):
+        
+        # If the Body is attached to a Star, calls pos()
+        # else, the Body is attached to another body, calling pos_time(TIME)
+        try:
+            center_pos_parent = self.parent.pos()
+        except:
+            center_pos_parent = self.parent.pos_time(self.time)
+        
+        self.center_xpos = center_pos_parent[0]
+        self.center_ypos = center_pos_parent[1]
+        return [self.center_xpos, self.center_ypos]
+    
+    def set_orbit(self):
+        self.center_pos()
         self.orbit = plt.Circle((self.center_xpos, self.center_ypos), \
                                 self.radius, fill = False)
+    
         
-            
+
     def pos_angle(self, angle_deg):
         xpos = self.center_xpos +   \
                self.radius*math.cos(math.radians(angle_deg))
@@ -61,7 +90,10 @@ class Body:
         return [xpos, ypos]
     
     def pos_time(self, time):
-        run_time = time - self.time_on_perigee
+        self.time = time
+        self.set_orbit()
+        
+        run_time = self.time - self.time_on_perigee
         angle_time_deg = math.degrees(2*math.pi*(run_time / (self.period)))
         [xpos_time, ypos_time] = self.pos_angle(angle_time_deg)
         return [xpos_time, ypos_time]
@@ -115,4 +147,4 @@ class Body:
 # - Implement a FixedBody - Bodies tree        
 
 # OK HERE WE GO --------------- This is the major branch trying to implement a 
-# a body tree, in order to deal with the TO DO issues stated above       
+# a body tree, in order to deal with the TO DO issues stated above          
