@@ -53,7 +53,7 @@ print(titan.parent.parent.pos())
 # print(tatooine.path_part_laps(0, 1.0))
 # print(tatooine.path_part_laps(0, 1.00001))
 # print(tatooine.path_part_laps(3, 8))
-# print(tatooine.path_part_laps(3, 8.00001))      
+# print(tatooine.path_part_laps(3, 8.00001))
 
 # # Evaluating angles
 # print('\n---------- Testing angles ------')
@@ -63,9 +63,9 @@ print(titan.parent.parent.pos())
 # print(tatooine.path_angle_deg(0, 1.0))
 # print(tatooine.path_angle_deg(0, 1.00001))
 # print(tatooine.path_angle_deg(3, 8))
-# print(tatooine.path_angle_deg(3, 8.00001))   
+# print(tatooine.path_angle_deg(3, 8.00001))
 
-      
+
 # Plotting everything
 plt.plot(spica.xpos, spica.ypos, '*r')
 plt.grid(True)
@@ -88,4 +88,4 @@ ax.add_patch(tatooine.orbit)
 ax.add_patch(titan.orbit)
 
 plt.axis('scaled')
-plt.show() 
+plt.show()
